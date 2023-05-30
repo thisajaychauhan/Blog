@@ -1,24 +1,32 @@
 @extends('layouts.app')
 @section('content')
     <div class="container d-flex">
-        <div class="row">
+        <div class="row mx-auto">
             <div class="col-12 pt-2">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="display-one">Our Blog</h1>
                     </div>
-                  
+
                 </div>
+                @php
+                    $a = 1;
+                @endphp
                 @forelse ($posts as $post)
-                <ol>
-                        <li><a href="./blog/{{ $post->id }}">{{ ucfirst($post->title) }}</a></li>
-                    </ol>
+                   <div class="card p-1 mb-1">
+                       <h6>{{ $a }}.  <a href="./blog/{{ $post->id }}">{{ ucfirst($post->title) }}</a></h6>
+                   </div>
+                    @php
+                    $a++;
+                    @endphp
                 @empty
-                    <p class="text-warning">no blog posts available</p>
+                    <div class="text-center mt-5">
+                        <h4 class="text-warning">No blog posts available</h4>
+                    </div>
                 @endforelse
             </div>
         </div>
-        <div class="col-4 col-md-12 text-center">
+        <div class="col-2 text-center mt-5">
             <p>Create new Post</p>
             <a href="/blog/create" class="btn btn-primary btn-sm">Add Post</a>
         </div>

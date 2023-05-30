@@ -8,8 +8,6 @@
                     <a href="/blog" class="btn btn-outline-primary btn-sm float-end">Go back</a>
                     <h1 class="display-one">{{ ucfirst($post->title) }}</h1>
                     <p>{!! $post->body !!}</p>
-
-                    @dd($post->body)
                    </div>
                     
                    <div class="d-flex">
