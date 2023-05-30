@@ -18,11 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/blog',[BlogController::class,'index']);
-// Route::get('/blog/{blogPost}',[BlogController::class,'show']);
-// Route::get('/blog/create',[BlogController::class,'create']);
 
-
-Route::get('/blog', [BlogController::class, 'index']);
-Route::get('/blog/{blogPost}', [BlogController::class, 'show']);
-Route::get('/blog/create', [BlogController::class, 'create']);
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{blogPost}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+Route::get('/blog/{blogPost}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+Route::put('/blog/{blogPost}', [BlogController::class, 'update'])->name('blog.update');
+Route::delete('/blog/{blogPost}', [BlogController::class, 'destroy'])->name('blog.destroy');
+Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');

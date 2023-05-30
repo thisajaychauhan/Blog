@@ -8,15 +8,17 @@
                     <a href="/blog" class="btn btn-outline-primary btn-sm float-end">Go back</a>
                     <h1 class="display-one">{{ ucfirst($post->title) }}</h1>
                     <p>{!! $post->body !!}</p>
+
+                    @dd($post->body)
                    </div>
                     
                    <div class="d-flex">
                     <div class="mx-1">
-                        <a href="/blog{{ $post->id }}/edit" class="btn btn-outline-primary">Edit Post</a>
+                        <a href="{{ route('blog.edit', ['blogPost' => $post]) }}" class="btn btn-outline-primary">Edit Post</a>
                     </div>
     
                     <div>
-                        <form id="delete-frm" class="" action="" method="delete">
+                        <form id="delete-frm" class="" action="{{ route('blog.destroy', ['blogPost' => $post]) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger">Delete Post</button>
@@ -25,3 +27,5 @@
                    </div>
               </div>
             @endsection
+
+                  

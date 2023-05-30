@@ -30,7 +30,16 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'user_id' => 'required|exists:users,id',
+        ]);
+        
+    
+        $blogPost = BlogPost::create($validatedData);
+    
+        return redirect('/blog/' . $blogPost->id)->with('success','Post created successfully!');;
     }
 
     /**
@@ -44,24 +53,32 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(BlogPost $blogPost)
     {
-        //
+        return view('blog.edit', ['post' => $blogPost]);
     }
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, BlogPost $blogPost)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+
+        $blogPost->update($validatedData);
+
+        return redirect()->route('blog.show', ['blogPost' => $blogPost])->with('success','Post updated successfully!');;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(BlogPost $blogPost)
     {
-        //
+        $blogPost->delete();
+
+        return redirect()->route('blog.index')->with('success','Post deleted successfully!');;
     }
 }
