@@ -9,7 +9,7 @@
                     <p>Fill and submit this form to create a post</p>
 
                     <hr>
-                    <form action="" method="post">
+                    <form action="{{ route('blog.store') }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="control-group col-12">
