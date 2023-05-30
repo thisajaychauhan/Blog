@@ -22,7 +22,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.add');
+        return view('blog.create');
     }
 
     /**
@@ -36,10 +36,10 @@ class BlogController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
         
-    
         $blogPost = BlogPost::create($validatedData);
+        dd($validatedData);
     
-        return redirect('/blog/' . $blogPost->id)->with('success','Post created successfully!');;
+        return redirect('/blog/' . $blogPost->id)->with('success','Post created successfully!');
     }
 
     /**

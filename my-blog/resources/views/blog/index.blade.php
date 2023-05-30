@@ -14,7 +14,7 @@
                 @endphp
                 @forelse ($posts as $post)
                    <div class="card p-1 mb-1">
-                       <h6>{{ $a }}.  <a href="./blog/{{ $post->id }}">{{ ucfirst($post->title) }}</a></h6>
+                       <h6>{{ $a }}.  <a href="./blog/{{ $post->id }}" class="text-decoration-none text-dark">{{ ucfirst($post->title) }}</a></h6>
                    </div>
                     @php
                     $a++;
@@ -26,7 +26,7 @@
                 @endforelse
             </div>
         </div>
-        <div class="col-2 text-center mt-5">
+        <div class="col-3 text-center mt-5">
             <p>Create new Post</p>
             <a href="/blog/create" class="btn btn-primary btn-sm">Add Post</a>
         </div>
